@@ -6,6 +6,7 @@ const  bodyParser = require("body-parser");
 const cors = require("cors");
 const {HoldingModel} = require("./model/HoldingModel");
 const{PostionModel} = require('./model/PostionsModel');
+const {OrderModel} = require("./model/OrdersModel");
 
 const PORT = process.env.PORT || 8080;
 const url = process.env.MONGO_URL;
@@ -190,6 +191,18 @@ app.get("/allPostions" , async(req , res)=>{
     let allPostions = await PostionModel.find({});
     res.json(allPostions);
 });
+
+app.post("/newOrder" , async(req , res)=>{
+    let newOrder = new OrderModel({
+        name:req.body.name,
+    qty:req.body.qty,
+    price:req.body.price,
+    mode:req.body.mode,
+    });
+
+    newOrder.save();
+    res.send("order Saved");
+})
 
 app.listen(PORT , ()=>{
     console.log("App started");
