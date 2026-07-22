@@ -7,6 +7,9 @@ const cors = require("cors");
 const {HoldingModel} = require("./model/HoldingModel");
 const{PostionModel} = require('./model/PostionsModel');
 const {OrderModel} = require("./model/OrdersModel");
+const {UserModel} = require("./model/UserModel");
+const authRoute = require("./Routes/AuthRoute");
+const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT || 8080;
 const url = process.env.MONGO_URL;
@@ -14,8 +17,16 @@ const url = process.env.MONGO_URL;
 const app  = express();
 mongoose.connect(url);
 
-app.use(cors());
+app.use(cors({
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+app.use(express.json());
+app.use("/", authRoute);
 
 // app.get("/addHoldings", async(req , res)=>{
 //     let tempHolding = [{
