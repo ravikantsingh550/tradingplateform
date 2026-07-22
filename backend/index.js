@@ -17,11 +17,16 @@ const url = process.env.MONGO_URL;
 const app  = express();
 mongoose.connect(url);
 
-app.use(cors({
-    origin: ["http://localhost:5173"],
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // Frontend
+      "http://localhost:5174", // Dashboard
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-  }));
+  })
+);
 app.use(bodyParser.json());
 app.use(cookieParser());
 

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import  {Link} from "react-router";
+import axios from "axios";
 
 const Menu = () => {
   const [selectedMenu , setSelectedMenu] = useState(0);
@@ -15,6 +16,22 @@ const handleProfileClick = (index)=>{
 
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
+
+  const handleLogout = async () => {
+  try {
+    await axios.post(
+      "http://localhost:8080/logout",
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+
+    window.location.href = "http://localhost:5173/login";
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   return (
     
@@ -54,10 +71,16 @@ const handleProfileClick = (index)=>{
           </li>
         </ul>
         <hr />
-         <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
-        </div> 
+<div className="profile" onClick={handleProfileClick}>
+  <div className="avatar">ZU</div>
+  <p className="username">USERID</p>
+</div>
+
+{isProfileDropDownOpen && (
+  <div className="profile-dropdown">
+    <button onClick={handleLogout}>Logout</button>
+  </div>
+)}
       </div>
     </div>
   );

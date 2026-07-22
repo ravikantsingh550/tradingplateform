@@ -48,4 +48,21 @@ module.exports.Login = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
+
+module.exports.Logout = async (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false,
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Logged out successfully",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
