@@ -218,6 +218,11 @@ app.post("/newOrder" , async(req , res)=>{
 
     newOrder.save();
     res.send("order Saved");
+});
+
+app.get("/allOrders", async(req , res)=>{
+    let allOrders = await OrderModel.find({});
+    res.json(allOrders);
 })
 
 app.listen(PORT , ()=>{
