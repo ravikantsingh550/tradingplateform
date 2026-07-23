@@ -20,11 +20,11 @@ mongoose.connect(url);
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // Frontend
-      "http://localhost:5174", // Dashboard
+      "https://tradingplateform-six.vercel.app",
+      "https://tradingplateform-vgfy.vercel.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 app.use(bodyParser.json());

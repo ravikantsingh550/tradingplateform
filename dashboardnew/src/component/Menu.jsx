@@ -27,7 +27,7 @@ const handleProfileClick = (index)=>{
       }
     );
 
-    window.location.href = "http://localhost:5173/login";
+    window.location.href = "https://tradingplateform-six.vercel.app/login";
   } catch (err) {
     console.log(err);
   }

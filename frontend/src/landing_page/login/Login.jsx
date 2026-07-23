@@ -42,7 +42,7 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "http://localhost:5174";
+          window.location.href = "https://tradingplateform-vgfy.vercel.app";
         }, 1000);
       } else {
         handleError(message);

@@ -18,14 +18,14 @@ const Home = () => {
         );
 
         if (!response.data.status) {
-          window.location.href = "http://localhost:5173/login";
+          window.location.href = "https://tradingplateform-six.vercel.app/login";
           return;
         }
 
         setUsername(response.data.user);
       } catch (err) {
         console.error(err);
-        window.location.href = "http://localhost:5173/login";
+        window.location.href = "https://tradingplateform-six.vercel.app/login";
       }
     };
 
