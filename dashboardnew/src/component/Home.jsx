@@ -10,7 +10,7 @@ const Home = () => {
     const verify = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/verify",
+          "https://tradingplateform.onrender.com/verify",
           {},
           {
             withCredentials: true,

@@ -20,7 +20,7 @@ const handleProfileClick = (index)=>{
   const handleLogout = async () => {
   try {
     await axios.post(
-      "http://localhost:8080/logout",
+      "https://tradingplateform.onrender.com/logout",
       {},
       {
         withCredentials: true,
