@@ -59,47 +59,72 @@ const Signup = () => {
   };
 
   return (
-    <div className="form_container">
-      <h2>Signup Account</h2>
+  <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <div className="card shadow-lg p-4 login-card">
+      <h2 className="text-center mb-4 fw-bold">Create Account</h2>
+
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Enter your email"
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Username</label>
+        <div className="mb-3">
+          <label htmlFor="username" className="form-label">
+            Username
+          </label>
           <input
             type="text"
+            className="form-control"
             name="username"
             value={username}
             placeholder="Enter your username"
             onChange={handleOnChange}
+            required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            name="email"
+            value={email}
+            placeholder="Enter your email"
+            onChange={handleOnChange}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
             type="password"
+            className="form-control"
             name="password"
             value={password}
             placeholder="Enter your password"
             onChange={handleOnChange}
+            required
           />
         </div>
-        <button type="submit">Submit</button>
-        <span>
-          Already have an account? <Link to={"/login"}>Login</Link>
-        </span>
+
+        <button className="btn btn-primary w-100 mt-2" type="submit">
+          Sign Up
+        </button>
+
+        <p className="text-center mt-3 mb-0">
+          Already have an account?{" "}
+          <Link to="/login" className="text-decoration-none">
+            Login
+          </Link>
+        </p>
       </form>
+
       <ToastContainer />
     </div>
-  );
+  </div>
+);
 };
 
 export default Signup;

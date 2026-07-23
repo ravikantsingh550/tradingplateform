@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { VerticalGraph } from "./VerticalGraph";
 
 const Orders = () => {
   const [allOrders , setAllOrders] = useState([]);
@@ -14,9 +15,22 @@ const Orders = () => {
      .catch((err) => {
         console.log(err);
       });
-  },[])
+  },[]);
+
+   const labels  = allOrders.map((subArray)=>subArray["name"]);
+
+    const data = {
+      labels,
+      datasets:[{
+        label:"stock price",
+        data: allOrders.map((stock)=>stock.price),
+        backgroundColor :"rgba(255,99,132,0.5)",
+      },
+      ],
+    };
 
   return (
+
     <div className="orders">
       <div >
          <h3 className="title">Orders ({allOrders.length})</h3>
@@ -47,7 +61,10 @@ const Orders = () => {
           </table>
           </div>
       </div>
+           <VerticalGraph data={data}/>
      </div>
+
+      
   );
 };
 

@@ -10,7 +10,6 @@ import {
   MoreHoriz,
 } from "@mui/icons-material";
 import { DoughnutGraph } from "./DoughnutGraph";
-// import { data } from "react-router";
 
 const labels = watchlist.map((stock) => stock.name);
 

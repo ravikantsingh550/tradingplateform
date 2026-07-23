@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import "./login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -58,37 +59,57 @@ const Login = () => {
   };
 
   return (
-    <div className="form_container">
-      <h2>Login Account</h2>
+  <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <div className="card shadow-lg p-4 login-card">
+      <h2 className="text-center mb-4 fw-bold">Login Account</h2>
+
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
           <input
             type="email"
+            className="form-control"
             name="email"
             value={email}
             placeholder="Enter your email"
             onChange={handleOnChange}
+            required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
             type="password"
+            className="form-control"
             name="password"
             value={password}
             placeholder="Enter your password"
             onChange={handleOnChange}
+            required
           />
         </div>
-        <button type="submit">Submit</button>
-        <span>
-          Already have an account? <Link to={"/signup"}>Signup</Link>
-        </span>
+
+        <button className="btn btn-primary w-100 mt-2" type="submit">
+          Login
+        </button>
+
+        <p className="text-center mt-3 mb-0">
+          Don't have an account?{" "}
+          <Link to="/signup" className="text-decoration-none">
+            Signup
+          </Link>
+        </p>
       </form>
+
       <ToastContainer />
     </div>
-  );
+  </div>
+);
 };
 
 export default Login;
