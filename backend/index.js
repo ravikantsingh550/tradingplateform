@@ -8,7 +8,7 @@ const {HoldingModel} = require("./model/HoldingModel");
 const{PostionModel} = require('./model/PostionsModel');
 const {OrderModel} = require("./model/OrdersModel");
 const {UserModel} = require("./model/UserModel");
-const authRoute = require("./Routes/AuthRoute");
+const authRoute = require("./routes/AuthRoute");
 const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT || 8080;
